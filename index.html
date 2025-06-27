@@ -478,7 +478,8 @@
 
     const img = document.createElement('img');
     img.src = article.image;
-    img.alt = article.titre || 'Image article';
+   img.alt = article.alt || article.titre || 'Image article';
+
 
     const h2 = document.createElement('h2');
     h2.textContent = article.titre;
