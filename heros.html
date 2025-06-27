@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Héros – MmadiNotes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fafafa;
+      color: #222;
+      margin: 0;
+      padding: 0 1rem 2rem 1rem;
+      line-height: 1.6;
+    }
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      user-select: none;
+    }
+    nav a {
+      color: #ccc;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a.active,
+    nav a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto 0 auto;
+    }
+    h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    p.intro {
+      margin-bottom: 2rem;
+      color: #555;
+    }
+    .article-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    article {
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      width: calc(50% - 0.5rem);
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+      color: inherit;
+    }
+    article:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    article img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 0.7rem;
+    }
+    article h3 {
+      margin: 0 0 0.5rem 0;
+      color: #333;
+    }
+    article p {
+      color: #555;
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    .button {
+      display: inline-block;
+      background: #333;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      user-select: none;
+      transition: background 0.3s ease;
+      margin: 2rem auto 0 auto;
+      text-align: center;
+      cursor: pointer;
+    }
+    .button:hover {
+      background: #555;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #666;
+      font-size: 0.85rem;
+      user-select: none;
+      margin-top: 4rem;
+    }
+    @media (max-width: 600px) {
+      article {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MmadiNotes</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="heros.html" class="active">Héros</a>
+      <a href="ia-tech.html">IA & Tech</a>
+      <a href="vision-monde.html">Rencontrer Mmadi</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Mes héros personnels</h2>
+    <p class="intro">Voici les histoires des personnes qui m’inspirent.</p>
+    <div class="article-list">
+      <article onclick="location.href='hero-premier.html'">
+        <img src="images/hero-premier.jpg" alt="Hero Premier" />
+        <h3>Hero Premier</h3>
+        <p>Un exemple d'engagement et de courage.</p>
+      </article>
+      <!-- Ajoute d'autres héros ici -->
+    </div>
+    <a href="article-heros.html" class="button">➕ Ajouter un héros</a>
+  </main>
+  <footer>
+    <p>&copy; 2025 Mmadi Ibouroi Said – Tous droits réservés.</p>
+  </footer>
+<a href="nouvel_article.html?categorie=ia-tech"
+   style="position:fixed;bottom:20px;right:20px;background:#222;color:#fff;padding:0.7rem 1rem;border-radius:5px;text-decoration:none;z-index:1000;">
+   + Nouvelle publication
+</a>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nouvelle publication – MmadiNotes</title>
+<style>
+  body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #fafafa; 
+    padding: 2rem; 
+    color: #222;
+  }
+  main { 
+    max-width: 700px; 
+    margin: auto; 
+    background: white; 
+    padding: 2rem; 
+    border-radius: 6px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  }
+  label, select, input, textarea {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  button { 
+    margin-top: 1.5rem; 
+    padding: 0.6rem 1rem; 
+    font-size: 1rem; 
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Nouvelle-publication</h1>
+  <form id="formPub">
+    <label for="section">Section :</label>
+    <select id="section" name="section" required>
+      <option value="">-- Choisissez une section --</option>
+      <option value="ia-tech">IA & Tech</option>
+      <option value="lectures">Lectures</option>
+      <option value="rencontrer-mmadi">Rencontrer Mmadi</option>
+    </select>
+
+    <label for="titre">Titre :</label>
+    <input type="text" id="titre" name="titre" required />
+
+    <label for="contenu">Contenu :</label>
+    <textarea id="contenu" name="contenu" rows="8" required></textarea>
+
+    <!-- Voici le champ fichier IMAGE/VIDEO à cet emplacement précis -->
+    <label for="media">Ajouter une image ou vidéo :</label>
+    <input type="file" id="media" name="media" accept="image/*,video/*" />
+
+    <button type="submit">Publier</button>
+  </form>
+
+  <p id="message" style="color:green; margin-top:1rem;"></p>
+</main>
+
+<script>
+  const form = document.getElementById('formPub');
+  const message = document.getElementById('message');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const section = form.section.value;
+    const titre = form.titre.value.trim();
+    const contenu = form.contenu.value.trim();
+
+    if(!section || !titre || !contenu) return;
+
+    // Ici tu peux traiter les données, envoyer vers serveur, etc.
+
+    message.textContent = `Merci ! Ta publication pour la section "${section}" est prête. (Sauvegarde manuelle requise.)`;
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
