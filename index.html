@@ -301,112 +301,89 @@
   </div>
 
   <aside id="sidebar" aria-label="Menu principal">
-   <ul style="list-style:none; padding-left:0; margin-bottom:1rem;">
-  <li>
-    <a href="nouvel_article.html" style="font-weight:700; color:#222; user-select:text; display:block; padding:0.4rem 0;">
-  + Nouvelle publication
-</a>
-
-  </li>
-</ul>
+    <ul style="list-style:none; padding-left:0; margin-bottom:1rem;">
+      <li>
+        <a href="nouvel_article.html" style="font-weight:700; color:#222; user-select:text; display:block; padding:0.4rem 0;">
+          + Nouvelle publication
+        </a>
+      </li>
+    </ul>
 
     <nav>
+      <div class="accordion-item">
+        <div class="accordion-title" tabindex="0">Travail <span>+</span></div>
+        <div class="accordion-content">
+          <ul>
+            <li><a href="arken-group.html">Arken Group</a></li>
+            <li><a href="projets-encours.html">Projets en cours</a></li>
+            <li><a href="methodes-travail.html">Méthodes de travail</a></li>
+          </ul>
+        </div>
+      </div>
 
       <div class="accordion-item">
-  <div class="accordion-title" tabindex="0">Travail <span>+</span></div>
-  <div class="accordion-content">
-    <ul>
-      <li><a href="arken-group.html">Arken Group</a></li>
-      <li><a href="projets-encours.html">Projets en cours</a></li>
-      <li><a href="methodes-travail.html">Méthodes de travail</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <div class="accordion-title" tabindex="0">Rencontrer Mmadi <span>+</span></div>
-  <div class="accordion-content">
-    <ul>
-      <li><a href="vision-monde.html">Vision du monde</a></li>
-      <li><a href="afrique-futur.html">Afrique, vision et futur</a></li>
-      <li><a href="philosophie.html">Philosophie personnelle</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <div class="accordion-title" tabindex="0">IA & Tech <span>+</span></div>
-  <div class="accordion-content">
-    <ul>
-      <li><a href="reflexions-ia.html">Réflexions sur l’IA</a></li>
-      <li><a href="projets-techniques.html">Projets techniques</a></li>
-      <li><a href="apprentissage.html">Apprentissage</a></li>
-    </ul>
-  </div>
-</div>
-
-
-     <div class="accordion-item">
-  <div class="accordion-title" tabindex="0">Lectures <span>+</span></div>
-  <div class="accordion-content">
-    <ul>
-      <li><a href="livres.html">livres</a></li>
-      <li><a href="resumes.html">Résumés</a></li>
-      <li><a href="avis.html">Avis</a></li>
-    </ul>
-  </div>
-</div>
+        <div class="accordion-title" tabindex="0">Rencontrer Mmadi <span>+</span></div>
+        <div class="accordion-content">
+          <ul>
+            <li><a href="vision-monde.html">Vision du monde</a></li>
+            <li><a href="afrique-futur.html">Afrique, vision et futur</a></li>
+            <li><a href="philosophie.html">Philosophie personnelle</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
 
       <div class="accordion-item">
-  <div class="accordion-title" tabindex="0">Héros <span>+</span></div>
-  <div class="accordion-content">
-    <ul>
-      <li><a href="heros.html">Mes héros personnels</a></li>
-    </ul>
-  </div>
-</div>
+        <div class="accordion-title" tabindex="0">IA & Tech <span>+</span></div>
+        <div class="accordion-content">
+          <ul>
+            <li><a href="reflexions-ia.html">Réflexions sur l’IA</a></li>
+            <li><a href="projets-techniques.html">Projets techniques</a></li>
+            <li><a href="apprentissage.html">Apprentissage</a></li>
+          </ul>
+        </div>
+      </div>
 
+      <div class="accordion-item">
+        <div class="accordion-title" tabindex="0">Lectures <span>+</span></div>
+        <div class="accordion-content">
+          <ul>
+            <li><a href="livres.html">Livres</a></li>
+            <li><a href="resumes.html">Résumés</a></li>
+            <li><a href="avis.html">Avis</a></li>
+          </ul>
+        </div>
+      </div>
 
+      <div class="accordion-item">
+        <div class="accordion-title" tabindex="0">Héros <span>+</span></div>
+        <div class="accordion-content">
+          <ul>
+            <li><a href="heros.html">Mes héros personnels</a></li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </aside>
 
   <div id="overlay"></div>
 
   <main>
-  <div id="articles-container"></div>
+    <div id="articles-container"></div>
 
-  <section style="background:#fff; padding:2rem 1rem; margin-top:2rem; border-radius:6px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center;">
-    <h2 style="margin-bottom:1rem; font-size:1.4rem; color:#333;"> Inscrivez-vous pour recevoir ma newsletter</h2>
-    <p style="color:#555; margin-bottom:1rem;">Recevez mes nouvelles réflexions, projets, lectures et idées directement par email.</p>
-    <form action="#" method="post" style="display:flex; flex-direction:column; align-items:center; gap:0.7rem;">
-      <input type="email" name="email" placeholder="Votre adresse e-mail" required
-             style="padding:0.6rem 1rem; border-radius:20px; border:1.5px solid #ccc; width:100%; max-width:320px; font-size:1rem;">
-      <button type="submit"
-              style="padding:0.6rem 1.2rem; background:#222; color:#fff; border:none; border-radius:20px; font-weight:600; cursor:pointer;">
-        S'inscrire
-      </button>
-    </form>
-  </section>
-</main>
-
-
-   
-
-  <section style="background:#fff; padding:2rem 1rem; margin-top:2rem; border-radius:6px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center;">
-  <h2 style="margin-bottom:1rem; font-size:1.4rem; color:#333;"> Inscrivez-vous pour recevoir ma newsletter</h2>
-  <p style="color:#555; margin-bottom:1rem;">Recevez mes nouvelles réflexions, projets, lectures et idées directement par email.</p>
-  <form action="#" method="post" style="display:flex; flex-direction:column; align-items:center; gap:0.7rem;">
-    <input type="email" name="email" placeholder="Votre adresse e-mail" required
-           style="padding:0.6rem 1rem; border-radius:20px; border:1.5px solid #ccc; width:100%; max-width:320px; font-size:1rem;">
-    <button type="submit"
-            style="padding:0.6rem 1.2rem; background:#222; color:#fff; border:none; border-radius:20px; font-weight:600; cursor:pointer;">
-      S'inscrire
-    </button>
-  </form>
-</section>
-
-</main>
+    <section style="background:#fff; padding:2rem 1rem; margin-top:2rem; border-radius:6px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center;">
+      <h2 style="margin-bottom:1rem; font-size:1.4rem; color:#333;">Inscrivez-vous pour recevoir ma newsletter</h2>
+      <p style="color:#555; margin-bottom:1rem;">Recevez mes nouvelles réflexions, projets, lectures et idées directement par email.</p>
+      <form action="#" method="post" style="display:flex; flex-direction:column; align-items:center; gap:0.7rem;">
+        <input type="email" name="email" placeholder="Votre adresse e-mail" required
+               style="padding:0.6rem 1rem; border-radius:20px; border:1.5px solid #ccc; width:100%; max-width:320px; font-size:1rem;">
+        <button type="submit"
+                style="padding:0.6rem 1.2rem; background:#222; color:#fff; border:none; border-radius:20px; font-weight:600; cursor:pointer;">
+          S'inscrire
+        </button>
+      </form>
+    </section>
+  </main>
 
   <script>
     // Menu hamburger + overlay
@@ -471,56 +448,46 @@
       }
     });
   </script>
-<script>
-  // Fonction pour créer un article HTML à partir des données
-  function creerArticle(article) {
-    const articleEl = document.createElement('article');
 
-    const img = document.createElement('img');
-    img.src = article.image;
-   img.alt = article.alt || article.titre || 'Image article';
+  <script src="articles.js" defer></script>
+  <script>
+    // Fonction pour créer un article HTML à partir des données
+    function creerArticle(article) {
+      const articleEl = document.createElement('article');
 
+      const img = document.createElement('img');
+      img.src = article.image;
+      img.alt = article.alt || article.titre || 'Image article';
 
-    const h2 = document.createElement('h2');
-    h2.textContent = article.titre;
+      const h2 = document.createElement('h2');
+      h2.textContent = article.titre;
 
-    const p = document.createElement('p');
-    p.textContent = article.description;
+      const p = document.createElement('p');
+      p.textContent = article.description;
 
-    const a = document.createElement('a');
-    a.href = article.lien;
-    a.className = 'btn-read';
-    a.textContent = 'Lire plus';
+      const a = document.createElement('a');
+      a.href = article.lien;
+      a.className = 'btn-read';
+      a.textContent = 'Lire plus';
 
-    articleEl.appendChild(img);
-    articleEl.appendChild(h2);
-    articleEl.appendChild(p);
-    articleEl.appendChild(a);
+      articleEl.appendChild(img);
+      articleEl.appendChild(h2);
+      articleEl.appendChild(p);
+      articleEl.appendChild(a);
 
-    return articleEl;
-  }
+      return articleEl;
+    }
 
-  // Chargement du JSON et injection des articles
-  fetch('articles.json')
-    .then(response => {
-      if (!response.ok) throw new Error('Erreur lors du chargement du fichier articles.json');
-      return response.json();
-    })
-    .then(data => {
+    // Injecte les articles directement
+    document.addEventListener("DOMContentLoaded", () => {
       const container = document.getElementById('articles-container');
       container.innerHTML = ''; // Vide au cas où
-
-      data.forEach(article => {
+      articles.forEach(article => {
         const artEl = creerArticle(article);
         container.appendChild(artEl);
       });
-    })
-    .catch(err => {
-      console.error(err);
-      const container = document.getElementById('articles-container');
-      container.innerHTML = '<p>Impossible de charger les articles pour le moment.</p>';
     });
-</script>
+  </script>
 
 </body>
 </html>
