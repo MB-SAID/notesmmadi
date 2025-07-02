@@ -4,207 +4,131 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MmadiNotes - Accueil</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    /* Reset basique */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
     body {
       background: #fafafa;
       color: #222222;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Georgia, serif;
+      margin: 0;
+      padding-top: 56px;
       line-height: 1.6;
-      font-size: 16px;
-      padding-top: 56px; /* espace pour header fixe */
     }
     a {
-      color: #333333;
+      color: #333;
       text-decoration: none;
-      cursor: pointer;
     }
     a:hover {
       text-decoration: underline;
     }
     main {
       max-width: 900px;
-      margin: 0 auto 2rem auto;
-      padding: 0 1rem;
+      margin: auto;
+      padding: 1rem;
     }
     section {
       background: white;
-      padding: 1.5rem 2rem;
+      padding: 1.5rem;
       border-radius: 6px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
-      user-select: text;
     }
     section h2 {
       margin-bottom: 1rem;
-      font-weight: 700;
-      color: #444444;
+      color: #444;
     }
     .article-item {
       margin-bottom: 1rem;
-      user-select: text;
     }
     .article-item h3 {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      font-size: 1.1rem;
+      margin: 0 0 0.2rem 0;
     }
     .article-item p {
-      font-size: 0.95rem;
-      color: #555555;
-      margin-left: 0.3rem;
+      margin: 0 0 0.5rem 0.5rem;
+      color: #555;
     }
-    .article-item a {
-      color: #222222;
-    }
-    .article-item a:hover {
-      color: #000000;
-      text-decoration: underline;
-    }
-    /* Newsletter */
-    #newsletter {
-      background: white;
-      padding: 1.5rem 2rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      margin-bottom: 3rem;
-      user-select: none;
-    }
-    #newsletter h2 {
-      margin-bottom: 1rem;
-      color: #333333;
-    }
-    #newsletter p {
-      margin-bottom: 1rem;
-      color: #555555;
-      font-size: 1rem;
-    }
-    #newsletter form {
-      display: flex;
-      justify-content: center;
-      gap: 0.7rem;
-      flex-wrap: wrap;
-    }
-    #newsletter input[type="email"] {
-      padding: 0.6rem 1rem;
-      border-radius: 20px;
-      border: 1.5px solid #ccc;
-      width: 250px;
-      max-width: 100%;
-      font-size: 1rem;
-      outline-offset: 2px;
-    }
-    #newsletter button {
-      padding: 0.6rem 1.5rem;
-      background: #222;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      user-select: none;
-    }
-    #newsletter button:hover {
-      background: #555;
-    }
-    /* Header fixe simplifié */
+
+    /* Header */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 56px;
       background: #222;
       color: white;
+      height: 56px;
       display: flex;
       align-items: center;
       padding: 0 1rem;
-      font-weight: 700;
-      font-size: 1.3rem;
-      user-select: none;
+      position: fixed;
+      top: 0;
+      width: 100%;
       z-index: 1000;
     }
-    /* Responsive */
-    @media (max-width: 600px) {
-      main {
-        padding: 0 1rem;
-      }
-      #newsletter form {
-        flex-direction: column;
-        align-items: center;
-      }
-      #newsletter input[type="email"] {
-        width: 100%;
-      }
-      #newsletter button {
-        width: 100%;
-      }
+    #site-title {
+      font-weight: 700;
+      font-size: 1.5rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    MmadiNotes
+    <div id="site-title">MmadiNotes</div>
   </header>
 
   <main>
-    <section id="section-ia-tech">
-      <h2>IA & Tech</h2>
+    <section>
+      <h2>Dernières publications – IA & Tech</h2>
       <div id="articles-ia-tech"></div>
     </section>
 
-    <section id="section-rencontrer-mmadi">
-      <h2>Rencontrer Mmadi</h2>
+    <section>
+      <h2>Dernières publications – Rencontrer Mmadi</h2>
       <div id="articles-rencontrer-mmadi"></div>
     </section>
 
-    <section id="newsletter" aria-label="Inscription à la newsletter">
-      <h2>Inscrivez-vous pour recevoir ma newsletter</h2>
-      <p>Recevez mes nouvelles réflexions, projets, lectures et idées directement par email.</p>
-      <form action="#" method="post">
-        <input type="email" name="email" placeholder="Votre adresse e-mail" required aria-label="Adresse email"/>
-        <button type="submit">S'inscrire</button>
+    <section>
+      <h2>Lectures récentes</h2>
+      <div id="articles-livres"></div>
+    </section>
+
+    <section>
+      <h2>Héros</h2>
+      <div id="articles-heros"></div>
+    </section>
+
+    <section style="text-align:center;">
+      <h2>Inscrivez-vous à la newsletter</h2>
+      <p>Recevez mes réflexions, lectures et projets chaque semaine.</p>
+      <form>
+        <input type="email" placeholder="Votre email" required style="padding:0.6rem 1rem;border-radius:20px;border:1px solid #ccc;width:250px;">
+        <button style="padding:0.6rem 1.2rem;border:none;border-radius:20px;background:#222;color:white;font-weight:600;margin-left:0.5rem;">S'inscrire</button>
       </form>
     </section>
   </main>
 
   <script>
     fetch('articles.json')
-      .then(response => response.json())
-      .then(articles => {
-        const iaTechContainer = document.getElementById('articles-ia-tech');
-        const rencontrerContainer = document.getElementById('articles-rencontrer-mmadi');
+      .then(res => res.json())
+      .then(data => {
+        const sections = {
+          'ia-tech': document.getElementById('articles-ia-tech'),
+          'rencontrer-mmadi': document.getElementById('articles-rencontrer-mmadi'),
+          'livres': document.getElementById('articles-livres'),
+          'heros': document.getElementById('articles-heros'),
+        };
 
-        // Articles IA & Tech
-        articles.filter(a => a.categorie === 'ia-tech').forEach(article => {
-          const div = document.createElement('div');
-          div.className = 'article-item';
-          div.innerHTML = `
+        data.forEach(article => {
+          const el = document.createElement('div');
+          el.className = 'article-item';
+          el.innerHTML = `
             <h3><a href="article.html?id=${article.id}">${article.titre}</a></h3>
             <p>${article.description || ''}</p>
           `;
-          iaTechContainer.appendChild(div);
-        });
-
-        // Articles Rencontrer Mmadi
-        articles.filter(a => a.categorie === 'rencontrer-mmadi').forEach(article => {
-          const div = document.createElement('div');
-          div.className = 'article-item';
-          div.innerHTML = `
-            <h3><a href="article.html?id=${article.id}">${article.titre}</a></h3>
-            <p>${article.description || ''}</p>
-          `;
-          rencontrerContainer.appendChild(div);
+          if (sections[article.categorie]) {
+            sections[article.categorie].appendChild(el);
+          }
         });
       })
-      .catch(() => {
-        document.getElementById('articles-ia-tech').innerHTML = '<p>Impossible de charger les articles.</p>';
-        document.getElementById('articles-rencontrer-mmadi').innerHTML = '<p>Impossible de charger les articles.</p>';
+      .catch(err => {
+        console.error('Erreur de chargement des articles:', err);
       });
   </script>
 
