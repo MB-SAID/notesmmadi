@@ -3,15 +3,110 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MmadiNotes - Menu + Recherche + Sidebar</title>
+<title>Test Barre Recherche</title>
 <style>
-/* ... colle ici tout ton CSS complet que tu viens d’envoyer ... */
+  /* Reset général */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background: #fafafa;
+    color: #222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* HEADER FIXE */
+  header {
+    background: #222;
+    color: white;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  #header-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+  }
+  #site-title {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #ccc;
+    white-space: nowrap;
+  }
+
+  /* BOUTON RECHERCHE */
+  #search-button {
+    background: #444;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  #search-button:hover {
+    background: #666;
+  }
+  #search-button svg {
+    width: 18px;
+    height: 18px;
+    fill: white;
+  }
+
+  /* ZONE DE RECHERCHE */
+  #search-container {
+    position: absolute;
+    top: 56px;
+    right: 10px;
+    background: white;
+    padding: 0.4rem 0.6rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1100;
+  }
+  #search-container.active {
+    display: flex;
+  }
+  #search-input {
+    border: 1.5px solid #666;
+    border-radius: 20px;
+    padding: 0.3rem 0.6rem;
+    outline: none;
+    width: 180px;
+    font-size: 1rem;
+    color: #222;
+  }
+  #search-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #666;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <button id="menu-toggle" aria-label="Ouvrir le menu">☰</button>
   <div id="header-center">
     <div id="site-title">MmadiNotes</div>
     <button id="search-button" aria-label="Ouvrir la recherche">
@@ -25,101 +120,26 @@
   <button id="search-close" aria-label="Fermer la recherche">&times;</button>
 </div>
 
-<aside id="sidebar" aria-label="Menu principal">
-  <nav>
-    <div class="accordion-title" tabindex="0">Travail <span>+</span></div>
-    <div class="accordion-content">
-      <ul>
-        <li><a href="#">Arken Group</a></li>
-      </ul>
-    </div>
-    <div class="accordion-title" tabindex="0">Rencontrer Mmadi <span>+</span></div>
-    <div class="accordion-content">
-      <ul>
-        <li><a href="#">Vision du monde</a></li>
-        <li><a href="#">Afrique, vision et futur</a></li>
-      </ul>
-    </div>
-    <div class="accordion-title" tabindex="0">IA & Tech <span>+</span></div>
-    <div class="accordion-content">
-      <ul>
-        <li><a href="#">Réflexions sur l’IA</a></li>
-      </ul>
-    </div>
-    <div class="accordion-title" tabindex="0">Lectures <span>+</span></div>
-    <div class="accordion-content">
-      <ul>
-        <li><a href="#">Livres</a></li>
-        <li><a href="#">Résumés</a></li>
-      </ul>
-    </div>
-  </nav>
-</aside>
-
-<div id="overlay"></div>
-
-<main>
-  <article>
-    <h2>Bienvenue sur MmadiNotes</h2>
-    <p>Contenu principal ici...</p>
-  </article>
-</main>
-
 <script>
-  // Toggle menu sidebar + overlay
-  const menuToggle = document.getElementById('menu-toggle');
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
-
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-  });
-  overlay.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-  });
-
-  // Accordion menu
-  const accordions = document.querySelectorAll('.accordion-title');
-  accordions.forEach(title => {
-    title.addEventListener('click', () => {
-      const content = title.nextElementSibling;
-      const isOpen = content.classList.contains('open');
-
-      document.querySelectorAll('.accordion-content.open').forEach(openContent => {
-        openContent.classList.remove('open');
-        openContent.previousElementSibling.querySelector('span').textContent = '+';
-      });
-
-      if (!isOpen) {
-        content.classList.add('open');
-        title.querySelector('span').textContent = '−';
-      }
-    });
-
-    title.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        title.click();
-      }
-    });
-  });
-
-  // Search toggle
+  // Récupérer les éléments
   const searchButton = document.getElementById('search-button');
   const searchContainer = document.getElementById('search-container');
   const searchClose = document.getElementById('search-close');
   const searchInput = document.getElementById('search-input');
 
+  // Ouvrir la barre de recherche
   searchButton.addEventListener('click', () => {
     searchContainer.classList.add('active');
     searchInput.focus();
   });
+
+  // Fermer la barre de recherche
   searchClose.addEventListener('click', () => {
     searchContainer.classList.remove('active');
     searchInput.value = '';
   });
+
+  // Fermer avec la touche Échap
   searchInput.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       searchContainer.classList.remove('active');
