@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ia-001",
+    "titre": "Comprendre l'IA en 2025",
+    "categorie": "ia-tech",
+    "image": "images/ia-2025.jpg",
+    "contenu": "<p>L'intelligence artificielle est partout...</p><p>Voici un article complet.</p>"
+  },
+  {
+    "id": "livres-001",
+    "titre": "Les meilleurs livres à lire en 2025",
+    "categorie": "livres",
+    "image": "images/livres.jpg",
+    "contenu": "<p>Voici une sélection de livres incontournables.</p>"
+  }
+]
