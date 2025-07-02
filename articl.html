@@ -65,45 +65,45 @@
 <body>
 
   <main>
-    <a href="index.html" class="btn-home">← Retour à l’accueil</a>
+    <a href="index.html" class="btn-home" aria-label="Retour à l’accueil">← Retour à l’accueil</a>
 
-    <article id="article-content">
+    <article id="article-content" role="article" aria-live="polite">
       <!-- Le contenu de l'article sera injecté ici -->
       <p>Chargement de l'article...</p>
     </article>
   </main>
 
   <a href="nouvel_article.html?categorie=ia-tech"
-     style="position:fixed;bottom:20px;right:20px;background:#222;color:#fff;padding:0.7rem 1rem;border-radius:5px;text-decoration:none;z-index:1000;">
+     style="position:fixed;bottom:20px;right:20px;background:#222;color:#fff;padding:0.7rem 1rem;border-radius:5px;text-decoration:none;z-index:1000;"
+     aria-label="Nouvelle publication">
      + Nouvelle publication
   </a>
 
   <script>
-    // Récupérer l'ID article depuis l'URL, par exemple article.html?id=ia-001
     const params = new URLSearchParams(window.location.search);
     const articleId = params.get('id');
 
+    const articleContentEl = document.getElementById('article-content');
+
     if (!articleId) {
-      document.getElementById('article-content').innerHTML = "<p>Aucun article spécifié.</p>";
+      articleContentEl.innerHTML = "<p>Aucun article spécifié.</p>";
     } else {
       fetch('articles.json')
         .then(response => response.json())
         .then(articles => {
           const article = articles.find(a => a.id === articleId);
           if (!article) {
-            document.getElementById('article-content').innerHTML = "<p>Article non trouvé.</p>";
+            articleContentEl.innerHTML = "<p>Article non trouvé.</p>";
             return;
           }
-
-          // Injecter le contenu de l'article dans la page
-          document.getElementById('article-content').innerHTML = `
+          articleContentEl.innerHTML = `
             <img src="${article.image}" alt="${article.titre}">
             <h1>${article.titre}</h1>
             ${article.contenu}
           `;
         })
         .catch(() => {
-          document.getElementById('article-content').innerHTML = "<p>Erreur lors du chargement de l'article.</p>";
+          articleContentEl.innerHTML = "<p>Erreur lors du chargement de l'article.</p>";
         });
     }
   </script>
