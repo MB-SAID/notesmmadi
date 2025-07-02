@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MmadiNotes</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header fixe avec menu + recherche -->
+  <!-- En-tête fixe avec titre, menu et recherche -->
   <header>
     <button id="menu-toggle" aria-label="Ouvrir le menu">☰</button>
     <div id="header-center">
@@ -21,13 +21,13 @@
     </div>
   </header>
 
-  <!-- Recherche -->
+  <!-- Champ de recherche -->
   <div id="search-container">
-    <input type="search" id="search-input" placeholder="Recherche..." />
+    <input type="search" id="search-input" placeholder="Recherche...">
     <button id="search-close">&times;</button>
   </div>
 
-  <!-- Sidebar (menu principal) -->
+  <!-- Sidebar -->
   <aside id="sidebar">
     <nav>
       <div class="accordion-title" tabindex="0">Travail <span>+</span></div>
@@ -53,7 +53,7 @@
       <div class="accordion-content">
         <ul>
           <li><a href="#">Livres</a></li>
-        
+          <li><a href="#">Résumés</a></li>
         </ul>
       </div>
     </nav>
@@ -65,13 +65,12 @@
   <main>
     <article>
       <h2>Bienvenue sur MmadiNotes</h2>
-      <p>Ceci est un exemple d’article sur ton site.</p>
+      <p>Ceci est un exemple d’article.</p>
     </article>
   </main>
 
-  <!-- Script JS -->
   <script>
-    // Bouton menu
+    // Sidebar toggle
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -85,16 +84,16 @@
       overlay.classList.remove('active');
     });
 
-    // Accordéon sidebar
-    const accordions = document.querySelectorAll('.accordion-title');
-    accordions.forEach(title => {
+    // Accordion toggle
+    const accordionTitles = document.querySelectorAll('.accordion-title');
+    accordionTitles.forEach(title => {
       title.addEventListener('click', () => {
         const content = title.nextElementSibling;
         const isOpen = content.classList.contains('open');
 
-        document.querySelectorAll('.accordion-content.open').forEach(openContent => {
-          openContent.classList.remove('open');
-          openContent.previousElementSibling.querySelector('span').textContent = '+';
+        document.querySelectorAll('.accordion-content.open').forEach(c => {
+          c.classList.remove('open');
+          c.previousElementSibling.querySelector('span').textContent = '+';
         });
 
         if (!isOpen) {
@@ -111,7 +110,7 @@
       });
     });
 
-    // Recherche
+    // Search bar toggle
     const searchButton = document.getElementById('search-button');
     const searchContainer = document.getElementById('search-container');
     const searchClose = document.getElementById('search-close');
@@ -121,12 +120,10 @@
       searchContainer.classList.add('active');
       searchInput.focus();
     });
-
     searchClose.addEventListener('click', () => {
       searchContainer.classList.remove('active');
       searchInput.value = '';
     });
-
     searchInput.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         searchContainer.classList.remove('active');
