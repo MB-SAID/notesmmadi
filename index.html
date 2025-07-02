@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MmadiNotes - Menu + Recherche + Sidebar</title>
+  <title>MmadiNotes</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- Header fixe avec menu + recherche -->
   <header>
     <button id="menu-toggle" aria-label="Ouvrir le menu">☰</button>
     <div id="header-center">
@@ -21,14 +21,14 @@
     </div>
   </header>
 
-  <!-- BARRE DE RECHERCHE -->
+  <!-- Recherche -->
   <div id="search-container">
     <input type="search" id="search-input" placeholder="Recherche..." />
     <button id="search-close">&times;</button>
   </div>
 
-  <!-- SIDEBAR -->
-  <aside id="sidebar" aria-label="Menu principal">
+  <!-- Sidebar (menu principal) -->
+  <aside id="sidebar">
     <nav>
       <div class="accordion-title" tabindex="0">Travail <span>+</span></div>
       <div class="accordion-content">
@@ -53,7 +53,7 @@
       <div class="accordion-content">
         <ul>
           <li><a href="#">Livres</a></li>
-          
+        
         </ul>
       </div>
     </nav>
@@ -61,17 +61,17 @@
 
   <div id="overlay"></div>
 
-  <!-- MAIN -->
+  <!-- Contenu principal -->
   <main>
     <article>
       <h2>Bienvenue sur MmadiNotes</h2>
-      <p>Contenu principal ici...</p>
+      <p>Ceci est un exemple d’article sur ton site.</p>
     </article>
   </main>
 
-  <!-- JAVASCRIPT -->
+  <!-- Script JS -->
   <script>
-    // Sidebar toggle
+    // Bouton menu
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -80,13 +80,12 @@
       sidebar.classList.toggle('active');
       overlay.classList.toggle('active');
     });
-
     overlay.addEventListener('click', () => {
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
     });
 
-    // Accordion menu
+    // Accordéon sidebar
     const accordions = document.querySelectorAll('.accordion-title');
     accordions.forEach(title => {
       title.addEventListener('click', () => {
@@ -112,7 +111,7 @@
       });
     });
 
-    // Barre de recherche
+    // Recherche
     const searchButton = document.getElementById('search-button');
     const searchContainer = document.getElementById('search-container');
     const searchClose = document.getElementById('search-close');
