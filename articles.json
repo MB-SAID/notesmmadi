@@ -14,3 +14,10 @@
     "contenu": "<p>Voici une sélection de livres incontournables.</p>"
   }
 ]
+{
+  "id": "ia-003",
+  "titre": "GPT-4, Claude 3 et Gemini 2.5 : Quelle IA utiliser selon vos besoins ?",
+  "categorie": "ia-tech",
+  "image": "images/gpt-vs-claude-vs-gemini.jpg",
+  "contenu": "<p>En 2025, plusieurs intelligences artificielles dominent le marché. Les plus connues sont GPT-4 (OpenAI), Claude 3 (Anthropic) et Gemini 2.5 (Google DeepMind).</p><h3>🔍 GPT-4 : le roi de la précision et du raisonnement</h3><p>GPT-4 est idéal pour les tâches qui nécessitent une logique structurée, des explications claires, ou de la programmation. Il est particulièrement puissant dans :</p><ul><li>La rédaction professionnelle et académique</li><li>Le code (Python, JavaScript, etc.)</li><li>Les résumés longs, les articles argumentés</li></ul><h3>🧠 Claude 3 : mémoire contextuelle et nuances</h3><p>Claude 3 est excellent pour garder le contexte sur de longues conversations. Il est très bon pour :</p><ul><li>Les réflexions complexes et éthiques</li><li>Les projets collaboratifs avec mémoire étendue</li><li>Les discussions longues ou stratégiques</li></ul><h3>🌐 Gemini 2.5 : l'IA Google avec puissance multimodale</h3><p>Gemini 2.5 est intégré à l’écosystème Google. Il est efficace pour :</p><ul><li>L'analyse de documents Google (Docs, Sheets...)</li><li>La compréhension d’images, vidéos, PDF</li><li>Les recherches croisées et synthèses web</li></ul><p>✅ Conclusion : Le choix dépend de vos objectifs. Pour coder ou écrire, GPT-4 reste numéro 1. Pour raisonner sur le long terme, Claude 3 domine. Pour explorer tous les formats (texte + visuel), Gemini est un allié puissant.</p>"
+}
