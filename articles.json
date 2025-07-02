@@ -1,16 +1,29 @@
 [
   {
     "id": "ia-001",
-    "titre": "Comprendre l'IA en 2025",
+    "titre": "Comprendre l'intelligence artificielle en 2025",
     "categorie": "ia-tech",
     "image": "images/ia-2025.jpg",
-    "contenu": "<p>L'intelligence artificielle est partout...</p><p>Voici un article complet.</p>"
+    "alt": "Illustration IA 2025",
+    "description": "Un aperçu complet de l’intelligence artificielle et de son impact actuel.",
+    "contenu": "<p>L'intelligence artificielle est partout et transforme notre vie quotidienne...</p><p>Voici un article complet pour comprendre les enjeux et les opportunités.</p>"
+  },
+  {
+    "id": "arken-001",
+    "titre": "Présentation d'Arken Group",
+    "categorie": "rencontrer-mmadi",
+    "image": "images/arken-group.jpg",
+    "alt": "Logo Arken Group",
+    "description": "Découvrez la maison mère de mes activités et projets.",
+    "contenu": "<p>Arken Group est la structure principale où je développe mes idées et entreprises...</p>"
   },
   {
     "id": "livres-001",
     "titre": "Les meilleurs livres à lire en 2025",
     "categorie": "livres",
     "image": "images/livres.jpg",
-    "contenu": "<p>Voici une sélection de livres incontournables.</p>"
+    "alt": "Livres recommandés",
+    "description": "Une sélection personnelle des ouvrages incontournables.",
+    "contenu": "<p>Voici une liste de livres qui m'ont marqué et que je recommande pour 2025...</p>"
   }
 ]
