@@ -1,63 +1,18 @@
-/* styles.css */
-
-/* Styles généraux du corps */
+/* Reset général */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   background: #fafafa;
   color: #222;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 2rem;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
-/* Styles pour la plupart des pages avec article centré */
-article {
-  max-width: 700px;
-  margin: auto;
-  background: white;
-  padding: 2rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Pour certaines pages où padding et margin sont différents */
-main {
-  max-width: 700px;
-  margin: 80px auto;
-  padding: 0 1rem;
-}
-
-/* Titres dans article */
-article h1 {
-  font-size: 1.6rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-/* Paragraphes dans article */
-article p {
-  line-height: 1.7;
-  margin-top: 1rem;
-  color: #555;
-  font-size: 1.05rem;
-}
-
-/* Liens "Retour" */
-a.back, a.back-link {
-  display: block;
-  margin-top: 2rem;
-  text-align: center;
-  color: #555;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  user-select: none;
-}
-a.back:hover, a.back-link:hover {
-  text-decoration: underline;
-  color: #222;
-}
-
-/* Liens simples */
+/* Liens */
 a {
   color: #222;
   text-decoration: none;
@@ -66,60 +21,251 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Pour les sections avec liens visibles en bloc */
-.section-link {
-  display: block;
-  background: white;
-  padding: 1.2rem 1.5rem;
-  margin: 1rem auto;
-  max-width: 600px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-.section-link:hover {
-  background: #f0f0f0;
-}
-
-/* Header noir pour la page "Rencontrer Mmadi" */
+/* HEADER FIXE */
 header {
-  background-color: #222;
+  background: #222;
   color: white;
-  padding: 1rem;
-  text-align: center;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+#menu-toggle {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+#header-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.8rem;
+}
+#site-title {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #ccc;
+  white-space: nowrap;
 }
 
-/* Conteneur link-box dans Rencontrer Mmadi */
-.link-box {
-  background: white;
-  padding: 1.2rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* BOUTON RECHERCHE */
+#search-button {
+  background: #444;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-.link-box a {
+#search-button:hover {
+  background: #666;
+}
+#search-button svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+}
+
+/* ZONE DE RECHERCHE */
+#search-container {
+  position: absolute;
+  top: 56px;
+  right: 10px;
+  background: white;
+  padding: 0.4rem 0.6rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1100;
+}
+#search-container.active {
+  display: flex;
+}
+#search-input {
+  border: 1.5px solid #666;
+  border-radius: 20px;
+  padding: 0.3rem 0.6rem;
+  outline: none;
+  width: 180px;
+  font-size: 1rem;
   color: #222;
+}
+#search-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #666;
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+#sidebar {
+  position: fixed;
+  top: 56px;
+  left: -280px;
+  width: 280px;
+  height: calc(100vh - 56px);
+  background: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.15);
+  padding: 1rem;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 1050;
+}
+#sidebar.active {
+  left: 0;
+}
+#overlay {
+  display: none;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 56px);
+  background: rgba(0,0,0,0.4);
+  z-index: 1040;
+}
+#overlay.active {
+  display: block;
+}
+
+/* MENU ACCORDÉON */
+.accordion-title {
   font-weight: bold;
   font-size: 1.1rem;
-  text-decoration: none;
+  background: #eee;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.6rem;
 }
-.link-box a:hover {
-  text-decoration: underline;
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 1rem;
+  transition: max-height 0.3s ease;
+}
+.accordion-content.open {
+  max-height: 500px;
+}
+.accordion-content ul {
+  list-style: none;
+}
+.accordion-content ul li {
+  padding: 0.3rem 0;
+}
+.accordion-content ul li a {
+  font-weight: 500;
 }
 
-/* Corps des pages avec marges et paddings à zéro */
-body.no-padding {
-  padding: 0;
-  margin: 0;
-}
-
-/* Ajustement pour pages où padding body=0 et main a margin:80px auto */
-.main-padded {
-  max-width: 700px;
-  margin: 80px auto;
+/* MAIN */
+main {
+  max-width: 900px;
+  margin: 80px auto 2rem auto;
   padding: 0 1rem;
+}
+
+/* ARTICLES */
+article {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+article img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+article h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+article p {
+  font-size: 1.05rem;
+  color: #555;
+  margin: 1rem 0;
+}
+
+/* BOUTON Lire plus */
+.btn-read {
+  background: #555;
+  color: white;
+  padding: 0.5rem 1.1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  display: inline-block;
+}
+.btn-read:hover {
+  background: #333;
+}
+
+/* SECTION NEWSLETTER */
+#newsletter {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+#newsletter h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+#newsletter p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+#newsletter input[type="email"] {
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+  width: 260px;
+  max-width: 100%;
+}
+#newsletter button {
+  padding: 0.6rem 1.2rem;
+  background: #222;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+#newsletter button:hover {
+  background: #444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  #sidebar {
+    width: 220px;
+  }
+  #search-input {
+    width: 140px;
+  }
+  #search-input:focus {
+    width: 180px;
+  }
 }
