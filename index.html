@@ -1,374 +1,132 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>mmadinotes.com</title>
-  <style>
-    /* Reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      background: #fafafa;
-      color: #222222;
-      line-height: 1.6;
-    }
-    a {
-      color: #333333;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Header */
-    header {
-      background: #222222;
-      color: white;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      padding: 0 1rem;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      user-select: none;
-    }
-    #menu-toggle {
-      font-size: 1.8rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-      color: white;
-      user-select: none;
-      flex-shrink: 0;
-    }
-    #header-center {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.8rem;
-      position: relative;
-    }
-    #site-title {
-      font-weight: 700;
-      font-size: 1.5rem;
-      user-select: none;
-      color: #cccccc;
-      white-space: nowrap;
-    }
-
-    /* Bouton recherche rond */
-    #search-button {
-      background: #444444;
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      transition: background 0.3s ease;
-      flex-shrink: 0;
-    }
-    #search-button:hover {
-      background: #666666;
-    }
-    #search-button svg {
-      width: 18px;
-      height: 18px;
-      fill: white;
-    }
-
-    /* Barre de recherche */
-    #search-container {
-      position: absolute;
-      top: 56px;
-      right: 10px;
-      background: white;
-      padding: 0.3rem 0.5rem;
-      border-radius: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      display: none;
-      align-items: center;
-      gap: 0.5rem;
-      z-index: 1100;
-    }
-    #search-container.active {
-      display: flex;
-    }
-    #search-input {
-      border: 1.5px solid #666666;
-      border-radius: 20px;
-      padding: 0.3rem 0.6rem;
-      outline: none;
-      width: 180px;
-      font-size: 1rem;
-      color: #222;
-    }
-    #search-input::placeholder {
-      color: #999;
-    }
-    #search-input:focus {
-      border-color: #444;
-      width: 220px;
-    }
-    #search-close {
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: #666;
-      user-select: none;
-    }
-    #search-close:hover {
-      color: #222;
-    }
-
-    /* Sidebar */
-    #sidebar {
-      position: fixed;
-      top: 56px;
-      left: -280px;
-      width: 280px;
-      height: calc(100vh - 56px);
-      background: white;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.15);
-      padding: 1rem 1rem 2rem 1rem;
-      overflow-y: auto;
-      transition: left 0.3s ease;
-      z-index: 1050;
-      user-select: text;
-    }
-    #sidebar.active {
-      left: 0;
-    }
-    #overlay {
-      display: none;
-      position: fixed;
-      top: 56px;
-      left: 0;
-      width: 100vw;
-      height: calc(100vh - 56px);
-      background: rgba(0,0,0,0.4);
-      z-index: 1040;
-    }
-    #overlay.active {
-      display: block;
-    }
-
-    /* Accordéon menu */
-    #sidebar nav {
-      user-select: none;
-    }
-    #sidebar nav .accordion-item {
-      margin-bottom: 1rem;
-    }
-    #sidebar nav .accordion-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #444444;
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      background: #eee;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-      transition: background 0.3s ease;
-    }
-    #sidebar nav .accordion-title:hover {
-      background: #ddd;
-    }
-    #sidebar nav .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding-left: 0.7rem;
-      margin-top: 0.2rem;
-    }
-    #sidebar nav .accordion-content.open {
-      max-height: 500px;
-    }
-    #sidebar nav .accordion-content ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    #sidebar nav .accordion-content ul li {
-      padding: 0.3rem 0;
-    }
-    #sidebar nav .accordion-content ul li a {
-      color: #222;
-      font-weight: 500;
-      user-select: text;
-    }
-    #sidebar nav .accordion-content ul li a:hover {
-      color: #555;
-      text-decoration: underline;
-    }
-
-    /* Main content */
-    main {
-      max-width: 900px;
-      margin: 80px auto 2rem auto;
-      padding: 0 1rem;
-    }
-    article {
-      background: white;
-      padding: 1.4rem 1.6rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-      user-select: text;
-    }
-    article img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-      user-select: none;
-    }
-    article h2 {
-      color: #444;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    article p {
-      color: #555;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .btn-read {
-      display: inline-block;
-      background: #555;
-      color: white;
-      padding: 0.5rem 1.1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: background 0.3s ease;
-      user-select: none;
-      text-align: center;
-    }
-    .btn-read:hover {
-      background: #333;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      main {
-        margin: 80px 1rem 1rem 1rem;
-      }
-      #sidebar {
-        width: 220px;
-        padding-top: 1rem;
-      }
-      #search-input {
-        width: 130px;
-      }
-      #search-input:focus {
-        width: 180px;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MmadiNotes - Menu + Recherche + Sidebar</title>
+<style>
+/* ... colle ici tout ton CSS complet que tu viens d’envoyer ... */
+</style>
 </head>
 <body>
 
-  <header>
-    <button id="menu-toggle" aria-label="Ouvrir le menu">☰</button>
-    <div id="header-center">
-      <div id="site-title">MmadiNotes</div>
-      <button id="search-button" aria-label="Ouvrir la recherche">
-        <svg viewBox="0 0 24 24"><path d="M21.71 20.29l-3.388-3.388A7.936 7.936 0 0016 10a8 8 0 10-8 8 7.936 7.936 0 006.902-3.678l3.388 3.388a1 1 0 001.414-1.414zM4 10a6 6 0 1112 0 6 6 0 01-12 0z"/></svg>
-      </button>
-    </div>
-  </header>
-
-  <!-- Conteneur de la barre de recherche -->
-  <div id="search-container">
-    <input type="search" id="search-input" placeholder="Recherche..." aria-label="Recherche d'articles" />
-    <button id="search-close" aria-label="Fermer la recherche">&times;</button>
+<header>
+  <button id="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+  <div id="header-center">
+    <div id="site-title">MmadiNotes</div>
+    <button id="search-button" aria-label="Ouvrir la recherche">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M21.71 20.29l-3.388-3.388A7.936 7.936 0 0016 10a8 8 0 10-8 8 7.936 7.936 0 006.902-3.678l3.388 3.388a1 1 0 001.414-1.414zM4 10a6 6 0 1112 0 6 6 0 01-12 0z"/></svg>
+    </button>
   </div>
+</header>
 
-  <aside id="sidebar" aria-label="Menu principal">
-    <ul style="list-style:none; padding-left:0; margin-bottom:1rem;">
-      <li>
-        <a href="nouvel_article.html" style="font-weight:700; color:#222; user-select:text; display:block; padding:0.4rem 0;">
-          + Nouvelle publication
-        </a>
-      </li>
-    </ul>
+<div id="search-container">
+  <input type="search" id="search-input" placeholder="Recherche..." aria-label="Recherche d'articles" />
+  <button id="search-close" aria-label="Fermer la recherche">&times;</button>
+</div>
 
-    <nav>
-      <div class="accordion-item">
-        <div class="accordion-title" tabindex="0">Travail <span>+</span></div>
-        <div class="accordion-content">
-          <ul>
-            <li><a href="arken-group.html">Arken Group</a></li>
-            <!-- 'Projets en cours' et 'Méthodes de travail' supprimés -->
-          </ul>
-        </div>
-      </div>
+<aside id="sidebar" aria-label="Menu principal">
+  <nav>
+    <div class="accordion-title" tabindex="0">Travail <span>+</span></div>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="#">Arken Group</a></li>
+      </ul>
+    </div>
+    <div class="accordion-title" tabindex="0">Rencontrer Mmadi <span>+</span></div>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="#">Vision du monde</a></li>
+        <li><a href="#">Afrique, vision et futur</a></li>
+      </ul>
+    </div>
+    <div class="accordion-title" tabindex="0">IA & Tech <span>+</span></div>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="#">Réflexions sur l’IA</a></li>
+      </ul>
+    </div>
+    <div class="accordion-title" tabindex="0">Lectures <span>+</span></div>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="#">Livres</a></li>
+        <li><a href="#">Résumés</a></li>
+      </ul>
+    </div>
+  </nav>
+</aside>
 
-      <div class="accordion-item">
-        <div class="accordion-title" tabindex="0">Rencontrer Mmadi <span>+</span></div>
-        <div class="accordion-content">
-          <ul>
-            <li><a href="vision-monde.html">Vision du monde</a></li>
-            <li><a href="afrique-futur.html">Afrique, vision et futur</a></li>
-            <!-- 'Philosophie' et 'Contact' supprimés -->
-          </ul>
-        </div>
-      </div>
+<div id="overlay"></div>
 
-      <div class="accordion-item">
-        <div class="accordion-title" tabindex="0">IA & Tech <span>+</span></div>
-        <div class="accordion-content">
-          <ul>
-            <li><a href="reflexions-ia.html">Réflexions sur l’IA</a></li>
-            <!-- 'Projets techniques' et 'Apprentissage' supprimés -->
-          </ul>
-        </div>
-      </div>
+<main>
+  <article>
+    <h2>Bienvenue sur MmadiNotes</h2>
+    <p>Contenu principal ici...</p>
+  </article>
+</main>
 
-      <div class="accordion-item">
-        <div class="accordion-title" tabindex="0">Lectures <span>+</span></div>
-        <div class="accordion-content">
-          <ul>
-            <li><a href="livres.html">Livres</a></li>
-            <!-- Résumés et Avis supprimés -->
-          </ul>
-        </div>
-      </div>
+<script>
+  // Toggle menu sidebar + overlay
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
 
-      <!-- 'Héros' supprimé totalement -->
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+  });
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+  });
 
-    </nav>
-  </aside>
+  // Accordion menu
+  const accordions = document.querySelectorAll('.accordion-title');
+  accordions.forEach(title => {
+    title.addEventListener('click', () => {
+      const content = title.nextElementSibling;
+      const isOpen = content.classList.contains('open');
 
-  <div id="overlay"></div>
+      document.querySelectorAll('.accordion-content.open').forEach(openContent => {
+        openContent.classList.remove('open');
+        openContent.previousElementSibling.querySelector('span').textContent = '+';
+      });
 
-  <main>
-    <div id="articles-container"></div>
+      if (!isOpen) {
+        content.classList.add('open');
+        title.querySelector('span').textContent = '−';
+      }
+    });
 
-    <section style="background:#fff; padding:2rem 1rem; margin-top:2rem; border-radius:6px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center;">
-      <h2 style="margin-bottom:1rem; font-size:1.4rem; color:#333;">Inscrivez-vous pour recevoir ma newsletter</h2>
-      <p style="color:#555; margin-bottom:1rem;">Recevez mes nouvelles réflexions, projets, lectures et idées directement par email.</p>
-      <form action="#" method="post" style="display:flex; flex-direction:column; align-items:center; gap:0.7rem;">
-        <input type="email" name="email" placeholder="Votre adresse e-mail" required
-               style="padding:0.6rem 1rem; border-radius:20px; border:1.5px solid #ccc; width:100%; max-width:320px; font-size:1rem;">
-        <button type="submit"
-                style="padding:0.6rem 1.2rem; background:#222; color:#fff; border:none; border-radius:20px; font-weight:600; cursor:pointer;">
-          S'inscrire
-        </button>
-      </form>
+    title.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        title.click();
+      }
+    });
+  });
+
+  // Search toggle
+  const searchButton = document.getElementById('search-button');
+  const searchContainer = document.getElementById('search-container');
+  const searchClose = document.getElementById('search-close');
+  const searchInput = document.getElementById('search-input');
+
+  searchButton.addEventListener('click', () => {
+    searchContainer.classList.add('active');
+    searchInput.focus();
+  });
+  searchClose.addEventListener('click', () => {
+    searchContainer.classList.remove('active');
+    searchInput.value = '';
+  });
+  searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      searchContainer.classList.remove('active');
+      searchInput.value = '';
+    }
+  });
+</script>
+
+</body>
+</html>
