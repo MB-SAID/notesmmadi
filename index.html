@@ -3,134 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MmadiNotes - Accueil</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>mmadinotes.com</title>
   <style>
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
     body {
       background: #fafafa;
       color: #222222;
-      font-family: Georgia, serif;
-      margin: 0;
-      padding-top: 56px;
       line-height: 1.6;
+      padding-top: 56px;
     }
     a {
-      color: #333;
+      color: #333333;
       text-decoration: none;
+      cursor: pointer;
     }
     a:hover {
       text-decoration: underline;
     }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 1rem;
-    }
-    section {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-    section h2 {
-      margin-bottom: 1rem;
-      color: #444;
-    }
-    .article-item {
-      margin-bottom: 1rem;
-    }
-    .article-item h3 {
-      margin: 0 0 0.2rem 0;
-    }
-    .article-item p {
-      margin: 0 0 0.5rem 0.5rem;
-      color: #555;
-    }
 
-    /* Header */
     header {
-      background: #222;
+      background: #222222;
       color: white;
       height: 56px;
       display: flex;
       align-items: center;
       padding: 0 1rem;
       position: fixed;
-      top: 0;
       width: 100%;
+      top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      user-select: none;
     }
     #site-title {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+      padding: 0 1rem;
+    }
+    article {
+      background: white;
+      padding: 1.4rem 1.6rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    article img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+    article h2 {
+      margin-bottom: 0.5rem;
+      color: #444;
+    }
+    article p {
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .btn-read {
+      display: inline-block;
+      background: #555;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .btn-read:hover {
+      background: #333;
+    }
+    section#newsletter {
+      background: white;
+      padding: 2rem;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    section#newsletter input[type="email"] {
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      border: 1.5px solid #ccc;
+      width: 250px;
+      font-size: 1rem;
+    }
+    section#newsletter button {
+      padding: 0.6rem 1.5rem;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    section#newsletter button:hover {
+      background: #555;
     }
   </style>
 </head>
 <body>
-
   <header>
     <div id="site-title">MmadiNotes</div>
   </header>
-
   <main>
-    <section>
-      <h2>Dernières publications – IA & Tech</h2>
-      <div id="articles-ia-tech"></div>
-    </section>
+    <div id="articles-container"></div>
 
-    <section>
-      <h2>Dernières publications – Rencontrer Mmadi</h2>
-      <div id="articles-rencontrer-mmadi"></div>
-    </section>
-
-    <section>
-      <h2>Lectures récentes</h2>
-      <div id="articles-livres"></div>
-    </section>
-
-    <section>
-      <h2>Héros</h2>
-      <div id="articles-heros"></div>
-    </section>
-
-    <section style="text-align:center;">
-      <h2>Inscrivez-vous à la newsletter</h2>
-      <p>Recevez mes réflexions, lectures et projets chaque semaine.</p>
-      <form>
-        <input type="email" placeholder="Votre email" required style="padding:0.6rem 1rem;border-radius:20px;border:1px solid #ccc;width:250px;">
-        <button style="padding:0.6rem 1.2rem;border:none;border-radius:20px;background:#222;color:white;font-weight:600;margin-left:0.5rem;">S'inscrire</button>
+    <section id="newsletter">
+      <h2>Inscrivez-vous pour recevoir ma newsletter</h2>
+      <p>Recevez mes nouvelles réflexions, projets, lectures et idées directement par email.</p>
+      <form action="#" method="post">
+        <input type="email" name="email" placeholder="Votre adresse e-mail" required />
+        <button type="submit">S'inscrire</button>
       </form>
     </section>
   </main>
 
+  <script src="articles.js" defer></script>
   <script>
-    fetch('articles.json')
-      .then(res => res.json())
-      .then(data => {
-        const sections = {
-          'ia-tech': document.getElementById('articles-ia-tech'),
-          'rencontrer-mmadi': document.getElementById('articles-rencontrer-mmadi'),
-          'livres': document.getElementById('articles-livres'),
-          'heros': document.getElementById('articles-heros'),
-        };
+    function creerArticle(article) {
+      const articleEl = document.createElement('article');
 
-        data.forEach(article => {
-          const el = document.createElement('div');
-          el.className = 'article-item';
-          el.innerHTML = `
-            <h3><a href="article.html?id=${article.id}">${article.titre}</a></h3>
-            <p>${article.description || ''}</p>
-          `;
-          if (sections[article.categorie]) {
-            sections[article.categorie].appendChild(el);
-          }
-        });
-      })
-      .catch(err => {
-        console.error('Erreur de chargement des articles:', err);
+      const img = document.createElement('img');
+      img.src = article.image;
+      img.alt = article.alt || article.titre || 'Image article';
+
+      const h2 = document.createElement('h2');
+      h2.textContent = article.titre;
+
+      const p = document.createElement('p');
+      p.textContent = article.description;
+
+      const a = document.createElement('a');
+      a.href = article.lien;
+      a.className = 'btn-read';
+      a.textContent = 'Lire plus';
+
+      articleEl.appendChild(img);
+      articleEl.appendChild(h2);
+      articleEl.appendChild(p);
+      articleEl.appendChild(a);
+
+      return articleEl;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById('articles-container');
+      container.innerHTML = '';
+      articles.forEach(article => {
+        const artEl = creerArticle(article);
+        container.appendChild(artEl);
       });
+    });
   </script>
-
 </body>
 </html>
