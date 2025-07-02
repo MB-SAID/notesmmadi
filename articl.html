@@ -67,18 +67,46 @@
   <main>
     <a href="index.html" class="btn-home">← Retour à l’accueil</a>
 
-    <article>
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Technologie et innovation">
-      <h1>L'Afrique au cœur de l'innovation technologique</h1>
-      <p>Ce texte est un exemple d’article complet. Tu pourras l’écrire toi-même ou le charger automatiquement plus tard.</p>
-      <p>Tu peux parler ici de tes idées, tes lectures, tes recherches, ou tes expériences personnelles. L’article peut être aussi long que tu veux.</p>
-      <p>Tu veux inspirer, documenter, construire ta pensée. MmadiNotes est là pour ça.</p>
+    <article id="article-content">
+      <!-- Le contenu de l'article sera injecté ici -->
+      <p>Chargement de l'article...</p>
     </article>
   </main>
-<a href="nouvel_article.html?categorie=ia-tech"
-   style="position:fixed;bottom:20px;right:20px;background:#222;color:#fff;padding:0.7rem 1rem;border-radius:5px;text-decoration:none;z-index:1000;">
-   + Nouvelle publication
-</a>
+
+  <a href="nouvel_article.html?categorie=ia-tech"
+     style="position:fixed;bottom:20px;right:20px;background:#222;color:#fff;padding:0.7rem 1rem;border-radius:5px;text-decoration:none;z-index:1000;">
+     + Nouvelle publication
+  </a>
+
+  <script>
+    // Récupérer l'ID article depuis l'URL, par exemple article.html?id=ia-001
+    const params = new URLSearchParams(window.location.search);
+    const articleId = params.get('id');
+
+    if (!articleId) {
+      document.getElementById('article-content').innerHTML = "<p>Aucun article spécifié.</p>";
+    } else {
+      fetch('articles.json')
+        .then(response => response.json())
+        .then(articles => {
+          const article = articles.find(a => a.id === articleId);
+          if (!article) {
+            document.getElementById('article-content').innerHTML = "<p>Article non trouvé.</p>";
+            return;
+          }
+
+          // Injecter le contenu de l'article dans la page
+          document.getElementById('article-content').innerHTML = `
+            <img src="${article.image}" alt="${article.titre}">
+            <h1>${article.titre}</h1>
+            ${article.contenu}
+          `;
+        })
+        .catch(() => {
+          document.getElementById('article-content').innerHTML = "<p>Erreur lors du chargement de l'article.</p>";
+        });
+    }
+  </script>
 
 </body>
 </html>
