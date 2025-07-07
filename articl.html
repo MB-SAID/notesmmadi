@@ -314,8 +314,6 @@
         <div class="accordion-content">
           <ul>
             <li><a href="arken-group.html">Arken Group</a></li>
-            <li><a href="projets-encours.html">Projets en cours</a></li>
-            <li><a href="methodes-travail.html">Méthodes de travail</a></li>
           </ul>
         </div>
       </div>
@@ -324,10 +322,8 @@
         <div class="accordion-title" tabindex="0">Rencontrer Mmadi <span>+</span></div>
         <div class="accordion-content">
           <ul>
-            <li><a href="vision-monde.html">Vision du monde</a></li>
             <li><a href="afrique-futur.html">Afrique, vision et futur</a></li>
-            <li><a href="philosophie.html">Philosophie personnelle</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="vision-monde.html">Vision du monde</a></li>
           </ul>
         </div>
       </div>
@@ -337,8 +333,6 @@
         <div class="accordion-content">
           <ul>
             <li><a href="reflexions-ia.html">Réflexions sur l’IA</a></li>
-            <li><a href="projets-techniques.html">Projets techniques</a></li>
-            <li><a href="apprentissage.html">Apprentissage</a></li>
           </ul>
         </div>
       </div>
@@ -348,17 +342,6 @@
         <div class="accordion-content">
           <ul>
             <li><a href="livres.html">Livres</a></li>
-            <li><a href="resumes.html">Résumés</a></li>
-            <li><a href="avis.html">Avis</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="accordion-item">
-        <div class="accordion-title" tabindex="0">Héros <span>+</span></div>
-        <div class="accordion-content">
-          <ul>
-            <li><a href="heros.html">Mes héros personnels</a></li>
           </ul>
         </div>
       </div>
@@ -373,4 +356,89 @@
   </div>
 
   <main>
-    <a href="index.html" class="btn-home"
+    <article>
+      <h1 id="article-title">Chargement...</h1>
+      <p id="article-date" style="color: gray; margin-bottom: 1rem;"></p>
+      <img id="article-image" alt="Image de l'article" style="max-width:100%; display:none; margin-bottom:1rem;">
+      <div id="article-content"></div>
+    </article>
+  </main>
+
+  <a href="index.html" class="btn-home" title="Retour à l'accueil">← Retour à l'accueil</a>
+
+  <script>
+    // Gestion menu sidebar
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+
+    // Recherche
+    const searchButton = document.getElementById('search-button');
+    const searchContainer = document.getElementById('search-container');
+    const searchClose = document.getElementById('search-close');
+    const searchInput = document.getElementById('search-input');
+
+    searchButton.addEventListener('click', () => {
+      searchContainer.classList.add('active');
+      searchInput.focus();
+    });
+    searchClose.addEventListener('click', () => {
+      searchContainer.classList.remove('active');
+      searchInput.value = '';
+    });
+
+    // Fonction pour lire le paramètre 'id' dans l'URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Charger article via JSON
+    async function loadArticle(id) {
+      try {
+        const response = await fetch('articles.json');
+        if (!response.ok) throw new Error('Erreur de chargement du fichier JSON');
+        const articles = await response.json();
+
+        const article = articles.find(a => a.id === id);
+        if (!article) {
+          document.getElementById('article-title').textContent = "Article non trouvé";
+          document.getElementById('article-content').innerHTML = "<p>Désolé, l'article demandé n'existe pas.</p>";
+          return;
+        }
+
+        document.getElementById('article-title').textContent = article.titre || "Sans titre";
+        if(article.image) {
+          const img = document.getElementById('article-image');
+          img.src = article.image;
+          img.style.display = 'block';
+        }
+        document.getElementById('article-content').innerHTML = article.contenu || "";
+      } catch (err) {
+        document.getElementById('article-title').textContent = "Erreur de chargement";
+        document.getElementById('article-content').innerHTML = `<p>${err.message}</p>`;
+      }
+    }
+
+    // Exécution au chargement
+    const articleId = getQueryParam('id');
+    if(articleId) {
+      loadArticle(articleId);
+    } else {
+      document.getElementById('article-title').textContent = "Aucun article sélectionné";
+      document.getElementById('article-content').innerHTML = "<p>Veuillez sélectionner un article valide.</p>";
+    }
+  </script>
+
+</body>
+</html>
