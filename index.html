@@ -13,16 +13,20 @@
     body {
       background: #fafafa;
       color: #222;
-      line-height: 1.5;
+      line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      font-size: 16px;
     }
     a {
-      color: #2a2a2a;
+      color: #0078d7;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
-    a:hover {
+    a:hover, a:focus {
+      color: #005ea2;
+      outline: none;
       text-decoration: underline;
     }
 
@@ -38,23 +42,24 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     header h1 {
       font-weight: 700;
-      font-size: 1.6rem;
-      letter-spacing: 1px;
+      font-size: 1.8rem;
+      letter-spacing: 1.2px;
+      cursor: default;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.4rem;
+      gap: 1.6rem;
     }
     nav ul li a {
       font-weight: 600;
       font-size: 1rem;
-      padding: 0.25rem 0.4rem;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+      padding: 0.3rem 0.5rem;
+      border-radius: 5px;
     }
     nav ul li a:hover {
       background-color: #444;
@@ -65,66 +70,77 @@
     main {
       flex-grow: 1;
       max-width: 1100px;
-      margin: 2.5rem auto 3rem auto;
+      margin: 3rem auto 4rem auto;
       padding: 0 1.5rem;
     }
     .intro {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .intro h2 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.4rem;
+      margin-bottom: 0.6rem;
       font-weight: 700;
+      color: #222;
     }
     .intro p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #555;
-      max-width: 600px;
-      margin: 0 auto;
+      line-height: 1.8;
     }
 
     /* Cartes thématiques */
     .themes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
+      gap: 2.5rem;
+      margin-bottom: 5rem;
     }
     .theme-card {
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      padding: 1.5rem 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+      padding: 2rem 2.2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: box-shadow 0.3s ease;
       cursor: pointer;
+      transition: box-shadow 0.35s ease, transform 0.3s ease;
+      user-select: none;
     }
-    .theme-card:hover {
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    .theme-card:hover, .theme-card:focus-within {
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+      transform: translateY(-6px);
+      outline: none;
     }
     .theme-card h3 {
       font-weight: 700;
-      margin-bottom: 0.7rem;
-      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
       color: #222;
     }
     .theme-card p {
       flex-grow: 1;
       color: #555;
-      font-size: 1rem;
-      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      margin-bottom: 1.3rem;
+      line-height: 1.5;
     }
     .theme-card a {
       align-self: flex-start;
       font-weight: 600;
       color: #0078d7;
-      transition: color 0.3s ease;
+      text-decoration: underline;
+      font-size: 1rem;
+      user-select: text;
     }
-    .theme-card a:hover {
+    .theme-card a:hover, .theme-card a:focus {
       color: #005ea2;
+      outline: none;
+      text-decoration: none;
     }
 
     /* Section articles récents */
@@ -132,80 +148,94 @@
       max-width: 100%;
     }
     .recent-articles h2 {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.6rem;
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: 2rem;
       text-align: center;
       color: #222;
     }
     .articles-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      gap: 2.5rem;
     }
     .article-card {
       background: white;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.35s ease, transform 0.3s ease;
+      user-select: none;
     }
-    .article-card:hover {
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    .article-card:hover, .article-card:focus-within {
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      transform: translateY(-6px);
+      outline: none;
     }
     .article-card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
+      border-bottom: 2px solid #0078d7;
+      transition: transform 0.4s ease;
+    }
+    .article-card:hover img {
+      transform: scale(1.05);
     }
     .article-content {
-      padding: 1rem 1.2rem;
+      padding: 1.2rem 1.4rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
     .article-content h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      font-size: 1.3rem;
       color: #222;
       font-weight: 700;
     }
     .article-content p {
       color: #555;
       flex-grow: 1;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       font-size: 1rem;
+      line-height: 1.4;
     }
     .article-content a {
       align-self: flex-start;
       font-weight: 600;
       color: #0078d7;
-      transition: color 0.3s ease;
+      text-decoration: underline;
+      font-size: 1rem;
+      user-select: text;
     }
-    .article-content a:hover {
+    .article-content a:hover, .article-content a:focus {
       color: #005ea2;
+      outline: none;
+      text-decoration: none;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
       background: #222;
       color: white;
       font-size: 0.9rem;
       user-select: none;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.15);
     }
 
     /* Responsive */
     @media (max-width: 650px) {
       nav ul {
         flex-direction: column;
-        gap: 0.7rem;
+        gap: 0.8rem;
       }
       main {
-        margin: 2rem 1rem 3rem 1rem;
+        margin: 2rem 1rem 4rem 1rem;
       }
     }
   </style>
@@ -216,52 +246,51 @@
   <h1>MmadiNotes</h1>
   <nav>
     <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="entreprise.html">Entreprise & Projets</a></li>
-      <li><a href="ia-tech.html">Intelligence Artificielle & Tech</a></li>
-      <li><a href="afrique.html">Afrique & Société</a></li>
-      <li><a href="reflexions.html">Réflexions & Philosophie</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html" aria-current="page">Accueil</a></li>
+      <li><a href="arken-group.html">Arken Group</a></li>
+      <li><a href="reflexions-ia.html">Réflexions sur l’IA</a></li>
+      <li><a href="afrique-futur.html">Afrique Vision Futur</a></li>
+      <li><a href="livres.html">Livres</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
 
 <main>
-  <section class="intro">
+  <section class="intro" role="region" aria-label="Introduction au site">
     <h2>Bienvenue sur MmadiNotes</h2>
     <p>Réflexions, projets et analyses sur la technologie, l’Afrique, l’entreprise et la société, pour bâtir un avenir éclairé.</p>
   </section>
 
-  <section class="themes">
-    <article class="theme-card" onclick="location.href='entreprise.html'">
-      <h3>Entreprise & Projets</h3>
+  <section class="themes" role="region" aria-label="Catégories principales">
+    <article class="theme-card" tabindex="0" onclick="location.href='arken-group.html'" onkeypress="if(event.key==='Enter') location.href='arken-group.html'">
+      <h3>Arken Group</h3>
       <p>Découvrez mes initiatives entrepreneuriales et projets innovants qui façonnent l’avenir.</p>
-      <a href="entreprise.html">Explorer</a>
+      <a href="arken-group.html" aria-label="Explorer Arken Group">Explorer</a>
     </article>
 
-    <article class="theme-card" onclick="location.href='ia-tech.html'">
-      <h3>Intelligence Artificielle & Tech</h3>
+    <article class="theme-card" tabindex="0" onclick="location.href='reflexions-ia.html'" onkeypress="if(event.key==='Enter') location.href='reflexions-ia.html'">
+      <h3>Réflexions sur l’IA</h3>
       <p>Analyses approfondies, réflexions et actualités sur l’intelligence artificielle et les nouvelles technologies.</p>
-      <a href="ia-tech.html">Explorer</a>
+      <a href="reflexions-ia.html" aria-label="Explorer Réflexions sur l’IA">Explorer</a>
     </article>
 
-    <article class="theme-card" onclick="location.href='afrique.html'">
-      <h3>Afrique & Société</h3>
+    <article class="theme-card" tabindex="0" onclick="location.href='afrique-futur.html'" onkeypress="if(event.key==='Enter') location.href='afrique-futur.html'">
+      <h3>Afrique Vision Futur</h3>
       <p>Perspectives sur le continent africain, ses défis, opportunités et son futur.</p>
-      <a href="afrique.html">Explorer</a>
+      <a href="afrique-futur.html" aria-label="Explorer Afrique Vision Futur">Explorer</a>
     </article>
 
-    <article class="theme-card" onclick="location.href='reflexions.html'">
-      <h3>Réflexions & Philosophie</h3>
-      <p>Partages personnels, idées philosophiques et pensées pour nourrir l’esprit.</p>
-      <a href="reflexions.html">Explorer</a>
+    <article class="theme-card" tabindex="0" onclick="location.href='livres.html'" onkeypress="if(event.key==='Enter') location.href='livres.html'">
+      <h3>Livres</h3>
+      <p>Lectures inspirantes et recommandations pour nourrir votre esprit.</p>
+      <a href="livres.html" aria-label="Explorer Livres">Explorer</a>
     </article>
   </section>
 
-  <section class="recent-articles">
+  <section class="recent-articles" role="region" aria-label="Articles récents">
     <h2>Articles récents</h2>
-    <div class="articles-list" id="articles-container">
+    <div class="articles-list" id="articles-container" aria-live="polite" aria-atomic="true">
       <!-- Articles injectés ici par JS -->
     </div>
   </section>
@@ -278,19 +307,19 @@
       titre: "Comprendre l'IA en 2025",
       image: "images/ia-2025.jpg",
       description: "L'intelligence artificielle est partout. Voici un article complet.",
-      lien: "articles/ia-2025.html"
+      lien: "article.html?id=ia-001"
     },
     {
       titre: "Les défis de l'Afrique aujourd'hui",
       image: "images/afrique-defis.jpg",
       description: "Une analyse approfondie des enjeux économiques et sociaux en Afrique.",
-      lien: "articles/afrique-defis.html"
+      lien: "article.html?id=afrique-001"
     },
     {
       titre: "Mes projets entrepreneuriaux",
       image: "images/entreprise-projets.jpg",
       description: "Présentation des projets innovants que je développe.",
-      lien: "articles/projets.html"
+      lien: "article.html?id=arken-001"
     }
   ];
 
@@ -299,6 +328,7 @@
   function creerArticle(article) {
     const art = document.createElement('article');
     art.className = 'article-card';
+    art.tabIndex = 0;
 
     const img = document.createElement('img');
     img.src = article.image;
@@ -316,6 +346,7 @@
     const a = document.createElement('a');
     a.href = article.lien;
     a.textContent = 'Lire plus';
+    a.setAttribute('aria-label', `Lire plus sur ${article.titre}`);
 
     content.appendChild(h3);
     content.appendChild(p);
