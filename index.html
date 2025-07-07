@@ -134,10 +134,19 @@
 
     footer {
       text-align: center;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
       background: #1e2a38;
       color: white;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+    }
+    .newsletter {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #ccc;
+    }
+    .newsletter a {
+      color: #ffffff;
+      font-weight: bold;
     }
 
     @media (max-width: 700px) {
@@ -164,17 +173,15 @@
       <li><a href="vision-monde.html">Vision du monde</a></li>
       <li><a href="afrique-futur.html">Afrique Vision Future</a></li>
       <li><a href="livres.html">Livres</a></li>
-      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
 
 <main>
   <section class="intro">
-  <h2>Bienvenue sur MmadiNotes</h2>
-  <p>Réflexions et actions pour bâtir du sens.</p>
-</section>
-
+    <h2>Bienvenue sur MmadiNotes</h2>
+    <p>Réflexions et actions pour bâtir du sens.</p>
+  </section>
 
   <section class="recent-articles">
     <h2>Articles récents</h2>
@@ -186,6 +193,10 @@
 
 <footer>
   <p>&copy; 2025 Mmadi Ibouroi Said – Tous droits réservés</p>
+  <div class="newsletter">
+    Inscrivez-vous à ma newsletter ou contactez-moi :  
+    <a href="mailto:mmadisaid99@gmail.com">mmadisaid99@gmail.com</a>
+  </div>
 </footer>
 
 <script>
@@ -225,7 +236,7 @@
   fetch('articles.json')
     .then(response => response.json())
     .then(data => {
-      if(data.length === 0) {
+      if (data.length === 0) {
         container.innerHTML = '<p style="text-align:center;">Aucun article disponible pour le moment.</p>';
         return;
       }
