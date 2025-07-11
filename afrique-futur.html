@@ -4,7 +4,76 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Afrique, vision et futur – MmadiNotes</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Copie-colle ici le CSS de l’exemple ci-dessus */
+    body {
+      background: #fafafa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      user-select: none;
+    }
+    nav a {
+      color: #ccc;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    main {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      line-height: 1.6;
+    }
+    a.back {
+      display: block;
+      max-width: 700px;
+      margin: 2rem auto 3rem auto;
+      padding: 0.6rem 1rem;
+      text-align: center;
+      background: #333;
+      color: white;
+      font-size: 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+    a.back:hover {
+      background: #555;
+    }
+    /* bouton nouvelle publication */
+    #new-post-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #222;
+      color: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      z-index: 1000;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+    #new-post-btn:hover {
+      background: #555;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -22,10 +91,8 @@
     <p>Dans cette section, je partage ma vision de l’Afrique de demain, ses défis, ses opportunités et le rôle de la jeunesse dans sa transformation.</p>
 
     <section class="articles-afrique">
-
-      <!-- Ton article "Nous n’y arriverons pas" ici -->
       <div class="article-card">
-        <img src="images/articles/nous-ny-arriverons-pas.jpg" alt="Nous n’y arriverrons pas" class="article-image">
+        <img src="images/articles/nous-ny-arriverons-pas.jpg" alt="Nous n’y arriverons pas" class="article-image">
         <div class="article-content">
           <h2 class="article-title">Nous n’y arriverons pas</h2>
           <p class="article-date">11 juillet 2025</p>
@@ -36,19 +103,11 @@
           <a href="article.html?id=article-001" class="read-more">Lire l'article complet</a>
         </div>
       </div>
-
-      <!-- Autres articles ici -->
-      <div class="article-card"> ... </div>
-      ...
-      
+      <!-- autres articles ici -->
     </section>
   </main>
 
   <a href="rencontrer.html" class="back" aria-label="Retour à Rencontrer Mmadi">← Retour à Rencontrer Mmadi</a>
-  <a href="nouvel_article.html?categorie=ia-tech"
-     style="position:fixed;bottom:20px;right:20px;background:#222;color:#fff;padding:0.7rem 1rem;border-radius:5px;text-decoration:none;z-index:1000;">
-     + Nouvelle publication
-  </a>
-
+  <a href="nouvel_article.html?categorie=ia-tech" id="new-post-btn">+ Nouvelle publication</a>
 </body>
 </html>
