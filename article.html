@@ -242,11 +242,6 @@
       margin-bottom: 1.2rem;
       font-size: 1.05rem;
     }
-    article img {
-      width: 100%;
-      border-radius: 4px;
-      margin-bottom: 1.5rem;
-    }
     .btn-home {
       display: inline-block;
       background: #555;
@@ -359,7 +354,6 @@
     <article>
       <h1 id="article-title">Chargement...</h1>
       <p id="article-date" style="color: gray; margin-bottom: 1rem;"></p>
-      <img id="article-image" alt="Image de l'article" style="max-width:100%; display:none; margin-bottom:1rem;">
       <div id="article-content"></div>
     </article>
   </main>
@@ -418,11 +412,6 @@
         }
 
         document.getElementById('article-title').textContent = article.titre || "Sans titre";
-        if(article.image) {
-          const img = document.getElementById('article-image');
-          img.src = article.image;
-          img.style.display = 'block';
-        }
         document.getElementById('article-content').innerHTML = article.contenu || "";
       } catch (err) {
         document.getElementById('article-title').textContent = "Erreur de chargement";
